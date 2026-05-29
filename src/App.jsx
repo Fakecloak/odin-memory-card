@@ -8,7 +8,9 @@ function App() {
   const [cards, setCards] = useState([])
   
   function shuffleCards() {
-    const shuffledCards = [...cards].sort( ()=> Math.random() - 0.5)
+    const shuffledCards = [...cards].sort( ()=> Math.random() - 0.5).slice(0,12)
+
+    setCards(shuffledCards)
   }
 
   const apiUrl = "https://genshin.jmp.blue/"
@@ -33,14 +35,19 @@ function App() {
           validCards.push({id: i, name:characterName, img:imgURL})
         }
       }
-      setCards(validCards.slice(0, 12)) //only taking the first 12 valid cards
+      shuffleCards() //shuffle the cards before setting state
   }
     fetchCharacters()
   }, [])
 
   return (
-    <>
-    </>
+    <div className="App">    
+    {cards.map( (card) => (
+      <div key={card.id} className="card">
+        <img src={card.img} alt={card.name} />
+      </div>
+    ))}
+    </div>
       )
 }
 
