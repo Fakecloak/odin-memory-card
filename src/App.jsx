@@ -6,11 +6,17 @@ function App() {
   const [highScore, setHighScore] = useState(0)
   const [win, setWin] = useState(false)
   const [cards, setCards] = useState([])
+  const [clickedCards, setClickedCards] = useState([])
   
   function shuffleCards(cardArray) {
     const shuffledCards = [...cardArray].sort( ()=> Math.random() - 0.5).slice(0,12)
     // const shuffledCards = cardArray.slice(0,12);
     setCards(shuffledCards)
+  }
+
+  function handleCardClick(id) {
+    setClickedCards([...clickedCards, id])
+    console.log(clickedCards)
   }
 
   const apiUrl = "https://genshin.jmp.blue/"
@@ -34,7 +40,7 @@ function App() {
   return (
     <div className="App">    
     {cards.map( (card) => (
-      <div key={card.id} className="card">
+      <div key={card.id} className="card" onClick={ ()=> handleCardClick(card.id)}>
         <img src={card.img} alt={card.name} loading='lazy' />
       </div>
     ))}
