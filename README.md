@@ -66,6 +66,7 @@ src/
 ├── components/
 │   ├── Card.jsx
 │   ├── Scoreboard.jsx
+    ├── WinSreen.jsx
 │
 ├── styles/
 │   ├── App.css
