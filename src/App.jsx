@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './styles/App.css'
 import Card from './components/Card.jsx'
 import WinScreen from './components/WinScreen.jsx'
 import ScoreBoard from './components/ScoreBoard.jsx'
+import bgMusic from './assets/bgMusic.mp3'
 
 function App() {
   const [score, setScore] = useState(0)
@@ -10,7 +11,37 @@ function App() {
   const [win, setWin] = useState(false)
   const [cards, setCards] = useState([])
   const [clickedCards, setClickedCards] = useState([])
-  
+  const audioRef = useRef(null)
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false)
+
+  function toggleMusic() {
+    if (isMusicPlaying){
+      audioRef.current.pause()
+    } else {
+      audioRef.current.play()
+    }
+    setIsMusicPlaying(!isMusicPlaying)
+  }
+
+  useEffect(() => {
+
+  function startMusic() {
+
+    audioRef.current.play()
+
+    setIsMusicPlaying(true)
+
+    window.removeEventListener("click", startMusic)
+  }
+
+  window.addEventListener("click", startMusic)
+
+  return () => {
+    window.removeEventListener("click", startMusic)
+  }
+
+}, [])
+
   function shuffleCards(cardArray) {
     const shuffledCards = [...cardArray].sort( ()=> Math.random() - 0.5)
     setCards(shuffledCards)
@@ -79,6 +110,8 @@ function App() {
       p-6
     ">
 
+    <audio ref={audioRef} src={bgMusic} loop />
+
     <h1 className="
         text-center
         text-5xl
@@ -89,6 +122,22 @@ function App() {
       ">
         Genshin Impact Card Game
       </h1>
+
+      <button
+          onClick={toggleMusic}
+          className="
+            bg-yellow-400
+            text-black
+            px-4
+            py-2
+            rounded-xl
+            font-bold
+            mb-6
+            hover:scale-105
+            transition
+          ">
+      {isMusicPlaying ? "Pause Music 🔇" : "Play Music 🎵"}
+    </button>
 
       <ScoreBoard
         score={score}
