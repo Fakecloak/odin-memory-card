@@ -15,8 +15,18 @@ function App() {
   }
 
   function handleCardClick(id) {
+    if(clickedCards.includes(id)){
+      console.log("Card already clicked! Game over.")
+      setScore(0) //reset score to 0
+      setClickedCards([])  //reset clicked cards
+
+    } else {
     setClickedCards([...clickedCards, id])
+    setHighScore( highScore + 1)
+    setScore(score + 1)
+
     console.log(clickedCards)
+    }
   }
 
   const apiUrl = "https://genshin.jmp.blue/"
