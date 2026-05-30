@@ -32,11 +32,20 @@ function App() {
       setHighScore(newScore)
       } 
 
+      if(newScore === 12) {
+        setWin(true)
+        console.log("You win!")
+      }
       shuffleCards(cards)
     }
     
   }
-
+  function resetGame() {
+    setScore(0)
+    setClickedCards([])
+    setWin(false)
+    shuffleCards(cards)
+  }
   const apiUrl = "https://genshin.jmp.blue/"
 
   useEffect( () => {
@@ -64,7 +73,19 @@ function App() {
 
     <h2>High Score: {highScore}</h2>
 
-    {cards.map((card) => (
+    {win && //display win screen if player wins
+    <div className="win-screen">
+      <h2> Congratulations! You win! </h2>
+      <button onClick={() => {
+        resetGame()
+      }}>
+        Play Again
+      </button>
+    </div>
+    }
+
+    {!win && // display cards if player hasn't won yet
+    cards.map((card) => (
 
       <div
         key={card.id}
