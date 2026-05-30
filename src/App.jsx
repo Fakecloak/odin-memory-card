@@ -99,7 +99,7 @@ function App() {
           loading='lazy'
         />
 
-        <p>{card.name}</p>
+        {/* <p>{card.name}</p> */}
 
       </div>
 
