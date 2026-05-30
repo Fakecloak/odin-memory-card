@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
 import './styles/App.css'
+import Card from './components/Card.jsx'
+import WinScreen from './components/winScreen.jsx'
+import ScoreBoard from './components/scoreBoard.jsx'
 
 function App() {
   const [score, setScore] = useState(0)
@@ -91,44 +94,17 @@ function App() {
     <h2>High Score: {highScore}</h2>
 
     {win && //display win screen if player wins
-    <div className="win-screen">
-      <h2> Congratulations! You win! </h2>
-      <button onClick={() => {
-        resetGame()
-      }}>
-        Play Again
-      </button>
-    </div>
+      <WinScreen resetGame={resetGame} />
     }
 
     {!win && // display cards if player hasn't won yet
     cards.map((card) => (
 
-      <div
-        key={card.id}
-        className="
-        bg-white/10
-        backdrop-blur-lg
-        rounded-2x1
-        overflow-hidden
-        border
-        border-white/20
-        cursor-pointer
-        transition
-        duration-300
-        hover:scale-105"
-        onClick={() => handleCardClick(card.id)}
-      >
-
-        <img
-          src={card.img}
-          alt={card.name}
-          loading='lazy'
-        />
-
-        {/* <p>{card.name}</p> */}
-
-      </div>
+      <Card 
+      key={card.id}
+      card={card}
+      handleCardClick={handleCardClick}
+      />
 
     ))}
 
