@@ -65,11 +65,28 @@ function App() {
   }, [])
 
   return (
-     <div className="App">
+     <div className="
+      min-h-screen
+      bg-gradient-to-b
+      from-slate-950
+      via-blue-950
+      to-slate-900
+      text-slate-100
+      text-center
+      p-6 ">
 
-    <h1>Memory Card Game</h1>
+    <h1 className="
+    text-center
+    text-5x1
+    font-bold
+    text-yellow-300
+    drop-shadow-lg
+    mb-4
+    ">Genshin Impact Card Game</h1>
 
-    <h2>Score: {score}</h2>
+    <h2 className="
+    text-center
+    ">Score: {score}</h2>
 
     <h2>High Score: {highScore}</h2>
 
@@ -89,7 +106,17 @@ function App() {
 
       <div
         key={card.id}
-        className="card"
+        className="
+        bg-white/10
+        backdrop-blur-lg
+        rounded-2x1
+        overflow-hidden
+        border
+        border-white/20
+        cursor-pointer
+        transition
+        duration-300
+        hover:scale-105"
         onClick={() => handleCardClick(card.id)}
       >
 
