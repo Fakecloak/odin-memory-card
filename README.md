@@ -19,7 +19,7 @@ The goal of the game is to click unique character cards without repeating the sa
 
 * React
 * JavaScript (ES6)
-* CSS3
+* Tailwind CSS
 * Vite
 * Genshin API
 
