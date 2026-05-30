@@ -24,15 +24,17 @@ function App() {
 
       const newScore = score + 1;
 
-      setClickedCards([...clickedCards, id])  
+      setClickedCards( (prev) => [...prev, id]) 
       setScore(newScore)
       console.log(clickedCards)
 
       if(newScore > highScore) {
       setHighScore(newScore)
       } 
+
+      shuffleCards(cards)
     }
-    shuffleCards(cards)
+    
   }
 
   const apiUrl = "https://genshin.jmp.blue/"
@@ -54,13 +56,35 @@ function App() {
   }, [])
 
   return (
-    <div className="App">    
-    {cards.map( (card) => (
-      <div key={card.id} className="card" onClick={ ()=> handleCardClick(card.id)}>
-        <img src={card.img} alt={card.name} loading='lazy' />
+     <div className="App">
+
+    <h1>Memory Card Game</h1>
+
+    <h2>Score: {score}</h2>
+
+    <h2>High Score: {highScore}</h2>
+
+    {cards.map((card) => (
+
+      <div
+        key={card.id}
+        className="card"
+        onClick={() => handleCardClick(card.id)}
+      >
+
+        <img
+          src={card.img}
+          alt={card.name}
+          loading='lazy'
+        />
+
+        <p>{card.name}</p>
+
       </div>
+
     ))}
-    </div>
+
+  </div>
   )
 
 }
