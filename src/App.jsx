@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import './styles/App.css'
 import Card from './components/Card.jsx'
-import WinScreen from './components/winScreen.jsx'
-import ScoreBoard from './components/scoreBoard.jsx'
+import WinScreen from './components/WinScreen.jsx'
+import ScoreBoard from './components/ScoreBoard.jsx'
 
 function App() {
   const [score, setScore] = useState(0)
@@ -76,29 +76,44 @@ function App() {
       to-slate-900
       text-slate-100
       text-center
-      p-6 ">
+      p-6
+    ">
 
     <h1 className="
-    text-center
-    text-5x1
-    font-bold
-    text-yellow-300
-    drop-shadow-lg
-    mb-4
-    ">Genshin Impact Card Game</h1>
+        text-center
+        text-5xl
+        font-bold
+        text-yellow-300
+        drop-shadow-lg
+        mb-4
+      ">
+        Genshin Impact Card Game
+      </h1>
 
-    <h2 className="
-    text-center
-    ">Score: {score}</h2>
+      <ScoreBoard
+        score={score}
+        highScore={highScore}
+      />
 
-    <h2>High Score: {highScore}</h2>
-
-    {win && //display win screen if player wins
+    { win && (
+      //display win screen if player wins
       <WinScreen resetGame={resetGame} />
-    }
+    )}
 
-    {!win && // display cards if player hasn't won yet
-    cards.map((card) => (
+    {!win && (
+      // display cards if player hasn't won yet
+
+    <div className="
+      grid 
+      grid-cols-2
+      sm:grid-cols-3
+      md:grid-cols-4
+      gap-6
+      mt-8
+      "
+    >
+
+    {cards.map((card) => (
 
       <Card 
       key={card.id}
@@ -108,7 +123,11 @@ function App() {
 
     ))}
 
-  </div>
+    </div>
+
+    )}
+
+    </div>
   )
 
 }
