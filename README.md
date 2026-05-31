@@ -3,6 +3,8 @@
 A React-based memory card game built using the Genshin Impact API.
 The goal of the game is to click unique character cards without repeating the same card twice.
 
+Project Link : https://odin-memory-card-sable.vercel.app/
+
 ## Features
 
 * Dynamic character cards fetched from the Genshin API
@@ -10,7 +12,7 @@ The goal of the game is to click unique character cards without repeating the sa
 * Score tracking system
 * High score tracking
 * Responsive card layout
-* Built with React Hooks (`useState`, `useEffect`)
+* Built with React Hooks (`useState`, `useEffect`,`useRef`)
 * Beginner-friendly project structure
 
 ---
@@ -19,7 +21,7 @@ The goal of the game is to click unique character cards without repeating the sa
 
 * React
 * JavaScript (ES6)
-* CSS3
+* Tailwind CSS
 * Vite
 * Genshin API
 
@@ -113,7 +115,7 @@ npm run dev
 * Add sound effects
 * Add win/lose screen
 * Store high score using LocalStorage
-* Add mobile optimization
+
 
 ---
 
