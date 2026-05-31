@@ -44,7 +44,7 @@ export default function Card({card, handleCardClick}) {
 
         </div>
 
-        {/* <p>{card.name}</p> */}
+        <p className="font-bold text-lg text-pink-400">{card.name.toUpperCase()}</p>
 
       </div>
     )

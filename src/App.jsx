@@ -93,7 +93,7 @@ function App() {
         img: `${apiUrl}characters/${characterName}/icon`
 
       }))
-      shuffleCards(validCards.slice(0, 12)) //shuffle the cards before setting state
+      shuffleCards(validCards.slice(0, 20)) //shuffle the cards before setting state
     }
     fetchCharacters()
   }, [])
